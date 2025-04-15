@@ -1,37 +1,35 @@
-package br.com.fiap.mercado_api.model;
+package br.com.fiap.mercado_api.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
 
 @Entity
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Item {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @NotBlank(message = "Nome é obrigatório")
+    @NotBlank(message = "Campo obrigatório")
     private String nome;
-
-    @Enumerated(EnumType.STRING)
-    @NotNull(message = "Tipo é obrigatório")
-    private TipoItem tipo;
-
-    @Enumerated(EnumType.STRING)
-    @NotNull(message = "Raridade é obrigatória")
-    private Raridade raridade;
-
-    @Positive(message = "Preço deve ser positivo")
-    private double preco;
-
+    @NotNull(message = "Campo obrigatório")
+    private EItemType type;
+    @NotNull(message = "Campo obrigatório")
+    private EItemRarity rarity;
+    @NotNull(message = "Campo obrigatório")
+    @Positive(message = "Preço precisa ser maior que zero.")
+    private BigDecimal price;
     @ManyToOne
-    @JoinColumn(name = "personagem_id")
-    private Personagem dono;
-
-
+    @JoinColumn(name = "owner_id")
+    private Personagem owner;
 }
-
-
-
