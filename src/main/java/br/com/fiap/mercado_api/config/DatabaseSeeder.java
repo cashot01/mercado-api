@@ -26,9 +26,9 @@ public class DatabaseSeeder {
     @PostConstruct
     public void seed() {
         var personagens = List.of(
-                Personagem.builder().nome("Arthas").classe(EPersonagemClass.GUERREIRO).nivel(10).moedas(BigDecimal.valueOf(150)).build(),
-                Personagem.builder().nome("Merlin").classe(EPersonagemClass.MAGO).nivel(12).moedas(BigDecimal.valueOf(200)).build(),
-                Personagem.builder().nome("Luna").classe(EPersonagemClass.ARQUEIRO).nivel(8).moedas(BigDecimal.valueOf(95)).build()
+                Personagem.builder().nome("Atenas").classe(EPersonagemClass.GUERREIRO).nivel(10).moedas(BigDecimal.valueOf(150)).build(),
+                Personagem.builder().nome("Marcos").classe(EPersonagemClass.MAGO).nivel(12).moedas(BigDecimal.valueOf(200)).build(),
+                Personagem.builder().nome("Livia").classe(EPersonagemClass.ARQUEIRO).nivel(8).moedas(BigDecimal.valueOf(95)).build()
         );
 
         personagemRepository.saveAll(personagens);
